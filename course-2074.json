@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2074,
   "repository": "LearningOS/2026a-oscamp-base-darkyellowcat",
-  "commit": "f2763220d02d2116947d285570fe7cd1d226d70f",
-  "score": 96,
+  "commit": "e1616560bf8bd60e188e5b325851b1b635a2025e",
+  "score": 100,
   "totalScore": 100,
   "exercises": [
     {
@@ -86,9 +86,9 @@
     {
       "name": "spinlock",
       "max": 4,
-      "score": 0,
-      "status": "fail",
-      "exitCode": 101
+      "score": 4,
+      "status": "pass",
+      "exitCode": 0
     },
     {
       "name": "spinlock_guard",
@@ -176,9 +176,9 @@
     }
   ],
   "student": "darkyellowcat",
-  "runId": "40295134313",
+  "runId": "40298149129",
   "runAttempt": "1",
   "upload": {
-    "status": "accepted"
+    "status": "pending"
   }
 }
