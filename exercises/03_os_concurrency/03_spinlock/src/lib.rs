@@ -40,15 +40,22 @@ impl<T> SpinLock<T> {
     /// # Safety
     /// Caller must ensure `unlock` is called after using the data.
     pub fn lock(&self) -> &mut T {
-        // TODO
-        self.locked.compare_exchange(false, true, Ordering::Acquire, Ordering::Relaxed).unwrap_or_else(|_| {
-            while self.locked.load(Ordering::Relaxed) {
-                std::hint::spin_loop();
-            }
-            self.locked.compare_exchange(false, true, Ordering::Acquire, Ordering::Relaxed).unwrap()
-        });
-        unsafe { &mut *self.data.get() }
+    loop {
+        if self.locked
+            .compare_exchange(
+                false,
+                true,
+                Ordering::Acquire,
+                Ordering::Relaxed,
+            )
+            .is_ok()
+        {
+            return unsafe { &mut *self.data.get() };
+        }
+
+        std::hint::spin_loop();
     }
+}
 
     /// Release lock.
     ///
